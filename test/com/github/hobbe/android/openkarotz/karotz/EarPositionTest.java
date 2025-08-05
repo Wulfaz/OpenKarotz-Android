@@ -1,8 +1,8 @@
-package com.github.hobbe.android.openkarotz.karotz;
+package com.github.wulfaz.android.openkarotz.karotz;
 
 import junit.framework.TestCase;
 
-import com.github.hobbe.android.openkarotz.karotz.IKarotz.EarPosition;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.EarPosition;
 
 public class EarPositionTest extends TestCase {
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Strings related to application -->
+
+    <string name="app_name">Karotz Controller</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="action_about">About</string>
+    <string name="action_manage_devices">Manage Devices</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_stop_sound">Stop</string>
+    <string name="progress_karotz_title">Talking to Karotz</string>
+    <string name="progress_karotz_description">Please wait&#x2026;</string>
+
+    <!-- Strings related to Main -->
+
+    <string name="version">Version</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="drawer_item_icon_desc">Icon</string>
+    <string name="err_no_connection">Internet connection is not active, configure your device</string>
+    <string name="err_cannot_connect">Cannot communicate with Karotz, check host name in settings</string>
+
+    <!-- Strings related to System fragment -->
+
+    <string name="version_label">OpenKarotz Version</string>
+    <string name="patch_label">OpenKarotz Patch</string>
+    <string name="onoff_label">Karotz Status</string>
+    <string name="on_label">ON</string>
+    <string name="off_label">OFF</string>
+    <string name="err_cannot_getversion">Cannot get Karotz version, check host name</string>
+    <string name="err_cannot_wakeup">Cannot wake Karotz up, check host name</string>
+    <string name="err_cannot_sleep">Cannot put Karotz to sleep, check host name</string>
+
+    <!-- Strings related to Color fragment -->
+
+    <string name="pulse_label">Pulse</string>
+    <string name="color_label">Color</string>
+
+    <!-- Strings related to Radio fragment -->
+
+    <string name="radio_button_desc">Radio</string>
+    <string name="radio_starting">Starting Radio:</string>
+
+    <!-- Strings related to Ears fragment -->
+
+    <string name="ears_reset_label">Reset Position</string>
+    <string name="ears_reset_desc">Reset</string>
+    <string name="ears_random_label">Random Position</string>
+    <string name="ears_random_desc">Random</string>
+    <string name="ears_disabled_label">Disable Ears</string>
+
+    <!-- Strings related to Settings -->
+
+    <string name="karotz_host_pref_title">OpenKarotz Host</string>
+    <string name="karotz_host_pref_summary">Host name or IP address:</string>
+
+</resources>

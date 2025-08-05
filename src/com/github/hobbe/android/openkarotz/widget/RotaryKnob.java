@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.widget;
+package com.github.wulfaz.android.openkarotz.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -35,7 +35,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.github.hobbe.android.openkarotz.R;
+import com.github.wulfaz.android.openkarotz.R;
 
 /**
  * Rotary knob view.

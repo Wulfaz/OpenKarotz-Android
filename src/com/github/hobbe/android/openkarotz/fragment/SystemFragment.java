@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.fragment;
+package com.github.wulfaz.android.openkarotz.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -40,13 +40,13 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.hobbe.android.openkarotz.R;
-import com.github.hobbe.android.openkarotz.activity.MainActivity;
-import com.github.hobbe.android.openkarotz.karotz.IKarotz.KarotzStatus;
-import com.github.hobbe.android.openkarotz.task.GetStatusAsyncTask;
-import com.github.hobbe.android.openkarotz.task.GetVersionAsyncTask;
-import com.github.hobbe.android.openkarotz.task.SleepAsyncTask;
-import com.github.hobbe.android.openkarotz.task.WakeupAsyncTask;
+import com.github.wulfaz.android.openkarotz.R;
+import com.github.wulfaz.android.openkarotz.activity.MainActivity;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.KarotzStatus;
+import com.github.wulfaz.android.openkarotz.task.GetStatusAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.GetVersionAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.SleepAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.WakeupAsyncTask;
 
 /**
  * System fragment.

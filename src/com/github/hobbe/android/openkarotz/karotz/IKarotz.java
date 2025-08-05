@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.karotz;
+package com.github.wulfaz.android.openkarotz.karotz;
 
 import java.io.IOException;
 

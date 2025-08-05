@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.layout;
+package com.github.wulfaz.android.openkarotz.layout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -36,7 +36,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.hobbe.android.openkarotz.R;
+import com.github.wulfaz.android.openkarotz.R;
 
 /**
  * FlowLayout.
@@ -405,11 +405,11 @@ public class FlowLayout extends ViewGroup {
         }
 
         private void readStyleParameters(Context context, AttributeSet attributeSet) {
-            TypedArray a = context.obtainStyledAttributes(attributeSet, R.styleable.FlowLayout_LayoutParams);
+            TypedArray a = context.obtainStyledAttributes(attributeSet, R.styleable.FlowLayout_Layout);
             try {
-                horizontalSpacing = a.getDimensionPixelSize(R.styleable.FlowLayout_LayoutParams_layout_horizontalSpacing, NO_SPACING);
-                verticalSpacing = a.getDimensionPixelSize(R.styleable.FlowLayout_LayoutParams_layout_verticalSpacing, NO_SPACING);
-                newLine = a.getBoolean(R.styleable.FlowLayout_LayoutParams_layout_newLine, false);
+                horizontalSpacing = a.getDimensionPixelSize(R.styleable.FlowLayout_Layout_layout_horizontalSpacing, NO_SPACING);
+                verticalSpacing = a.getDimensionPixelSize(R.styleable.FlowLayout_Layout_layout_verticalSpacing, NO_SPACING);
+                newLine = a.getBoolean(R.styleable.FlowLayout_Layout_layout_newLine, false);
             } finally {
                 a.recycle();
             }

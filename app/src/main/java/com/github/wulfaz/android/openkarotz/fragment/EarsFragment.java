@@ -1,0 +1,325 @@
+/*
+ * OpenKarotz-Android
+ * http://github.com/hobbe/OpenKarotz-Android
+ *
+ * Copyright (c) 2014 Olivier Bagot (http://github.com/hobbe)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+package com.github.wulfaz.android.openkarotz.fragment;
+
+import android.app.Activity;
+import android.os.Bundle;
+import androidx.fragment.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.ImageButton;
+import androidx.appcompat.widget.SwitchCompat;
+
+import com.github.wulfaz.android.openkarotz.R;
+import com.github.wulfaz.android.openkarotz.activity.MainActivity;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.EarMode;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.EarPosition;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.KarotzStatus;
+import com.github.wulfaz.android.openkarotz.task.EarModeAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.EarsAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.EarsRandomAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.EarsResetAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.GetEarModeAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.GetEarPositionsAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.GetStatusAsyncTask;
+import com.github.wulfaz.android.openkarotz.widget.RotaryKnob;
+import com.github.wulfaz.android.openkarotz.widget.RotaryKnob.RotaryKnobListener;
+
+/**
+ * Ears fragment.
+ */
+public class EarsFragment extends Fragment {
+
+    /**
+     * Initialize a new ears fragment.
+     */
+    public EarsFragment() {
+        // Nothing to do
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState == null) {
+            disableFields();
+            new GetStatusTask(getActivity()).execute();
+            new GetEarModeTask(getActivity()).execute();
+            new GetEarPositionsTask(getActivity()).execute();
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        // Fetch the selected page number
+        int index = getArguments().getInt(MainActivity.ARG_PAGE_NUMBER);
+
+        // List of pages
+        String[] pages = getResources().getStringArray(R.array.pages);
+
+        // Page title
+        String pageTitle = pages[index];
+        getActivity().setTitle(pageTitle);
+
+        View view = inflater.inflate(R.layout.page_ears, container, false);
+
+        initializeView(view);
+
+        return view;
+    }
+
+    private static void disableFields() {
+        setEnableFields(false);
+    }
+
+    private static void enableFields() {
+        setEnableFields(true);
+    }
+
+    private void initializeEarsDisabled(View view) {
+        earsDisabledSwitch = view.findViewById(R.id.switchEarsDisabled);
+        earsDisabledSwitchCheckedChangeListener = new EarsDisabledSwitchCheckedChangeListener();
+        earsDisabledSwitch.setOnCheckedChangeListener(earsDisabledSwitchCheckedChangeListener);
+    }
+
+    private void initializeEarsKnob(View view) {
+        earsKnob = view.findViewById(R.id.rotaryKnobEars);
+
+        earsKnob.setKnobListener(new RotaryKnobListener() {
+
+            @Override
+            public void onKnobChanged(int direction, int angle) {
+                // TODO: show position in TextView?
+            }
+
+            @Override
+            public void onKnobReleased(int direction, int angle) {
+                EarPosition pos = EarPosition.fromAngle(angle);
+                // Log.v(LOG_TAG, "Knob released on " + angle + "°, ear position " + pos.toString());
+                new RotateEarsTask(getActivity(), pos).execute();
+            }
+        });
+    }
+
+    private void initializeEarsRandom(View view) {
+        earsRandomButton = view.findViewById(R.id.buttonEarsRandom);
+
+        earsRandomButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                new EarsRandomTask(getActivity()).execute();
+            }
+        });
+    }
+
+    private void initializeEarsReset(View view) {
+        earsResetButton = view.findViewById(R.id.buttonEarsReset);
+
+        earsResetButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                new EarsResetTask(getActivity()).execute();
+            }
+        });
+    }
+
+    private void initializeView(View view) {
+        // Ears knob
+        initializeEarsKnob(view);
+
+        // Ears reset
+        initializeEarsReset(view);
+
+        // Ears random
+        initializeEarsRandom(view);
+
+        // Ears disabled
+        initializeEarsDisabled(view);
+    }
+
+    private static void setEnableFields(boolean enable) {
+        earsResetButton.setEnabled(enable);
+        earsRandomButton.setEnabled(enable);
+        // earsDisabledSwitch.setEnabled(enable);
+    }
+
+
+    private static class EarModeTask extends EarModeAsyncTask {
+
+        public EarModeTask(Activity activity, EarMode mode) {
+            super(activity, mode);
+        }
+
+        @Override
+        public void onPostExecute(Object result) {
+            super.onPostExecute(result);
+
+            EarMode newMode = (EarMode) result;
+            if (newMode != null) {
+                // Check switch, without triggering listener
+                earsDisabledSwitch.setOnCheckedChangeListener(null);
+                earsDisabledSwitch.setChecked(newMode.isDisabled());
+                setEnableFields(newMode.isEnabled());
+                earsDisabledSwitch.setOnCheckedChangeListener(earsDisabledSwitchCheckedChangeListener);
+            }
+        }
+    }
+
+    private class EarsDisabledSwitchCheckedChangeListener implements CompoundButton.OnCheckedChangeListener {
+
+        public EarsDisabledSwitchCheckedChangeListener() {
+            // Nothing to do
+        }
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            Log.d(LOG_TAG, "Ears disabled switch " + (isChecked ? "" : "un") + "checked");
+            new EarModeTask(getActivity(), isChecked ? EarMode.DISABLED : EarMode.ENABLED).execute();
+        }
+    }
+
+    private static class EarsRandomTask extends EarsRandomAsyncTask {
+
+        public EarsRandomTask(Activity activity) {
+            super(activity);
+        }
+
+        @Override
+        public void onPostExecute(Object result) {
+            super.onPostExecute(result);
+
+            if (result != null) {
+                EarPosition[] positions = (EarPosition[]) result;
+                // Note: currently one one knob for both ears
+                int angle = positions[0].toAngle();
+                Log.v(LOG_TAG, "Setting angle to " + angle + "°");
+                earsKnob.setAngle(angle * 1.0f);
+            }
+        }
+    }
+
+    private static class EarsResetTask extends EarsResetAsyncTask {
+
+        public EarsResetTask(Activity activity) {
+            super(activity);
+        }
+
+        @Override
+        public void onPostExecute(Object result) {
+            super.onPostExecute(result);
+
+            Log.v(LOG_TAG, "Resetting angle to 0°");
+            earsKnob.setAngle(0f);
+        }
+    }
+
+    private static class GetEarModeTask extends GetEarModeAsyncTask {
+
+        public GetEarModeTask(Activity activity) {
+            super(activity);
+        }
+
+        @Override
+        public void onPostExecute(Object result) {
+            super.onPostExecute(result);
+
+            EarMode earMode = (EarMode) result;
+            if (earMode != null) {
+                earsDisabledSwitch.setChecked(earMode.isDisabled());
+            }
+        }
+    }
+
+    private static class GetEarPositionsTask extends GetEarPositionsAsyncTask {
+
+        public GetEarPositionsTask(Activity activity) {
+            super(activity);
+        }
+
+        @Override
+        public void onPostExecute(Object result) {
+            super.onPostExecute(result);
+
+            EarPosition[] positions = (EarPosition[]) result;
+            if (positions != null) {
+                // Note: currently one one knob for both ears
+                int angle = positions[0].toAngle();
+                Log.v(LOG_TAG, "Setting angle to " + angle + "°");
+                earsKnob.setAngle(angle * 1.0f);
+            }
+        }
+    }
+
+    private static class GetStatusTask extends GetStatusAsyncTask {
+
+        public GetStatusTask(Activity activity) {
+            super(activity);
+        }
+
+        @Override
+        public void onPostExecute(Object result) {
+            super.onPostExecute(result);
+
+            KarotzStatus status = (KarotzStatus) result;
+
+            // Awake
+            boolean awake = (status != null && status.isAwake());
+            if (awake) {
+                enableFields();
+            } else {
+                disableFields();
+            }
+        }
+    }
+
+    private static class RotateEarsTask extends EarsAsyncTask {
+
+        public RotateEarsTask(Activity activity, EarPosition position) {
+            // Note: same position for both ears
+            super(activity, position, position);
+        }
+
+    }
+
+
+    private static RotaryKnob earsKnob = null;
+    private static ImageButton earsResetButton = null;
+    private static ImageButton earsRandomButton = null;
+    private static SwitchCompat earsDisabledSwitch = null;
+    private static EarsDisabledSwitchCheckedChangeListener earsDisabledSwitchCheckedChangeListener = null;
+
+    private static final String LOG_TAG = EarsFragment.class.getSimpleName();
+}

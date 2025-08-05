@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.fragment;
+package com.github.wulfaz.android.openkarotz.fragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,14 +44,14 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.github.hobbe.android.openkarotz.R;
-import com.github.hobbe.android.openkarotz.karotz.IKarotz.KarotzStatus;
-import com.github.hobbe.android.openkarotz.layout.FlowLayout;
-import com.github.hobbe.android.openkarotz.model.RadioGroupModel;
-import com.github.hobbe.android.openkarotz.model.RadioModel;
-import com.github.hobbe.android.openkarotz.task.GetStatusAsyncTask;
-import com.github.hobbe.android.openkarotz.task.SoundAsyncTask;
-import com.github.hobbe.android.openkarotz.util.AssetUtils;
+import com.github.wulfaz.android.openkarotz.R;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.KarotzStatus;
+import com.github.wulfaz.android.openkarotz.layout.FlowLayout;
+import com.github.wulfaz.android.openkarotz.model.RadioGroupModel;
+import com.github.wulfaz.android.openkarotz.model.RadioModel;
+import com.github.wulfaz.android.openkarotz.task.GetStatusAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.SoundAsyncTask;
+import com.github.wulfaz.android.openkarotz.util.AssetUtils;
 
 /**
  * Tab fragment for radio buttons.

@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.fragment;
+package com.github.wulfaz.android.openkarotz.fragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,12 +42,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.hobbe.android.openkarotz.R;
-import com.github.hobbe.android.openkarotz.activity.MainActivity;
-import com.github.hobbe.android.openkarotz.adapter.RadioTabsPagerAdapter;
-import com.github.hobbe.android.openkarotz.model.RadioGroupModel;
-import com.github.hobbe.android.openkarotz.model.RadioModel;
-import com.github.hobbe.android.openkarotz.util.AssetUtils;
+import com.github.wulfaz.android.openkarotz.R;
+import com.github.wulfaz.android.openkarotz.activity.MainActivity;
+import com.github.wulfaz.android.openkarotz.adapter.RadioTabsPagerAdapter;
+import com.github.wulfaz.android.openkarotz.model.RadioGroupModel;
+import com.github.wulfaz.android.openkarotz.model.RadioModel;
+import com.github.wulfaz.android.openkarotz.util.AssetUtils;
 
 /**
  * Radio fragment.

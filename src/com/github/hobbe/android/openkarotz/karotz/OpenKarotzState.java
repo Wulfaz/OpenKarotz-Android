@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.karotz;
+package com.github.wulfaz.android.openkarotz.karotz;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,9 +34,9 @@ import org.json.JSONObject;
 import android.graphics.Color;
 import android.util.Log;
 
-import com.github.hobbe.android.openkarotz.karotz.IKarotz.EarMode;
-import com.github.hobbe.android.openkarotz.karotz.IKarotz.EarPosition;
-import com.github.hobbe.android.openkarotz.karotz.IKarotz.KarotzStatus;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.EarMode;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.EarPosition;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.KarotzStatus;
 
 /**
  * Status for OpenKarotz.

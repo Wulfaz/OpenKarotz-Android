@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.fragment;
+package com.github.wulfaz.android.openkarotz.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -40,20 +40,20 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
-import com.github.hobbe.android.openkarotz.R;
-import com.github.hobbe.android.openkarotz.activity.MainActivity;
-import com.github.hobbe.android.openkarotz.karotz.IKarotz.EarMode;
-import com.github.hobbe.android.openkarotz.karotz.IKarotz.EarPosition;
-import com.github.hobbe.android.openkarotz.karotz.IKarotz.KarotzStatus;
-import com.github.hobbe.android.openkarotz.task.EarModeAsyncTask;
-import com.github.hobbe.android.openkarotz.task.EarsAsyncTask;
-import com.github.hobbe.android.openkarotz.task.EarsRandomAsyncTask;
-import com.github.hobbe.android.openkarotz.task.EarsResetAsyncTask;
-import com.github.hobbe.android.openkarotz.task.GetEarModeAsyncTask;
-import com.github.hobbe.android.openkarotz.task.GetEarPositionsAsyncTask;
-import com.github.hobbe.android.openkarotz.task.GetStatusAsyncTask;
-import com.github.hobbe.android.openkarotz.widget.RotaryKnob;
-import com.github.hobbe.android.openkarotz.widget.RotaryKnob.RotaryKnobListener;
+import com.github.wulfaz.android.openkarotz.R;
+import com.github.wulfaz.android.openkarotz.activity.MainActivity;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.EarMode;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.EarPosition;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.KarotzStatus;
+import com.github.wulfaz.android.openkarotz.task.EarModeAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.EarsAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.EarsRandomAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.EarsResetAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.GetEarModeAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.GetEarPositionsAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.GetStatusAsyncTask;
+import com.github.wulfaz.android.openkarotz.widget.RotaryKnob;
+import com.github.wulfaz.android.openkarotz.widget.RotaryKnob.RotaryKnobListener;
 
 /**
  * Ears fragment.

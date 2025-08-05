@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.adapter;
+package com.github.wulfaz.android.openkarotz.adapter;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -39,8 +39,8 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.ViewGroup;
 
-import com.github.hobbe.android.openkarotz.fragment.RadioTabFragment;
-import com.github.hobbe.android.openkarotz.model.RadioGroupModel;
+import com.github.wulfaz.android.openkarotz.fragment.RadioTabFragment;
+import com.github.wulfaz.android.openkarotz.model.RadioGroupModel;
 
 /**
  * Adapter for pager of radio station tabs.

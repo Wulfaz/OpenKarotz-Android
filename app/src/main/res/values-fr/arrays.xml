@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="pages">
+        <item>Accueil</item>
+        <item>Radio</item>
+        <item>Couleur</item>
+        <item>Oreilles</item>
+        <item>Karotz</item>
+    </string-array>
+
+</resources>

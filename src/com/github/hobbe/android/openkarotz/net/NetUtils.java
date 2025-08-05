@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.net;
+package com.github.wulfaz.android.openkarotz.net;
 
 import java.io.IOException;
 import java.io.InputStream;

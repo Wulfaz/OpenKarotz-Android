@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Device Management -->
+    <string name="add_device">Add Device</string>
+    <string name="scan_devices">Scan for Devices</string>
+    <string name="karotz_status">Karotz Status</string>
+    <string name="default_device">Default Device</string>
+
+    <!-- Device Status -->
+
+    <!-- Device Actions -->
+
+    <!-- Device Form -->
+
+    <!-- Multi-Device Features -->
+</resources>

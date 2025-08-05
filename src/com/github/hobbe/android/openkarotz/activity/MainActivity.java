@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.activity;
+package com.github.wulfaz.android.openkarotz.activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,20 +55,20 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.github.hobbe.android.openkarotz.R;
-import com.github.hobbe.android.openkarotz.adapter.DrawerListAdapter;
-import com.github.hobbe.android.openkarotz.fragment.ColorFragment;
-import com.github.hobbe.android.openkarotz.fragment.EarsFragment;
-import com.github.hobbe.android.openkarotz.fragment.HomeFragment;
-import com.github.hobbe.android.openkarotz.fragment.RadioFragment;
-import com.github.hobbe.android.openkarotz.fragment.SystemFragment;
-import com.github.hobbe.android.openkarotz.karotz.IKarotz.KarotzStatus;
-import com.github.hobbe.android.openkarotz.karotz.IKarotz.SoundControlCommand;
-import com.github.hobbe.android.openkarotz.karotz.Karotz;
-import com.github.hobbe.android.openkarotz.model.DrawerItem;
-import com.github.hobbe.android.openkarotz.net.NetUtils;
-import com.github.hobbe.android.openkarotz.task.GetStatusAsyncTask;
-import com.github.hobbe.android.openkarotz.task.SoundControlAsyncTask;
+import com.github.wulfaz.android.openkarotz.R;
+import com.github.wulfaz.android.openkarotz.adapter.DrawerListAdapter;
+import com.github.wulfaz.android.openkarotz.fragment.ColorFragment;
+import com.github.wulfaz.android.openkarotz.fragment.EarsFragment;
+import com.github.wulfaz.android.openkarotz.fragment.HomeFragment;
+import com.github.wulfaz.android.openkarotz.fragment.RadioFragment;
+import com.github.wulfaz.android.openkarotz.fragment.SystemFragment;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.KarotzStatus;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.SoundControlCommand;
+import com.github.wulfaz.android.openkarotz.karotz.Karotz;
+import com.github.wulfaz.android.openkarotz.model.DrawerItem;
+import com.github.wulfaz.android.openkarotz.net.NetUtils;
+import com.github.wulfaz.android.openkarotz.task.GetStatusAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.SoundControlAsyncTask;
 
 /**
  * Main activity.

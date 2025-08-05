@@ -31,8 +31,8 @@
                 android:padding="4dip"
                 android:text="@string/color_label" />
 
-            <com.github.hobbe.android.openkarotz.layout.FlowLayout
-                xmlns:f="http://schemas.android.com/apk/res/com.github.hobbe.android.openkarotz"
+            <com.github.wulfaz.android.openkarotz.layout.FlowLayout
+                xmlns:f="http://schemas.android.com/apk/res/com.github.wulfaz.android.openkarotz"
                 android:id="@+id/layoutColors"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
                 f:verticalSpacing="4dp" >
 
                 <!-- Spacer for color buttons -->
-            </com.github.hobbe.android.openkarotz.layout.FlowLayout>
+            </com.github.wulfaz.android.openkarotz.layout.FlowLayout>
         </LinearLayout>
 
         <TextView

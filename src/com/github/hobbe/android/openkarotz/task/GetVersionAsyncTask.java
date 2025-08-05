@@ -26,14 +26,14 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.task;
+package com.github.wulfaz.android.openkarotz.task;
 
 import java.io.IOException;
 
 import android.app.Activity;
 import android.util.Log;
 
-import com.github.hobbe.android.openkarotz.karotz.Karotz;
+import com.github.wulfaz.android.openkarotz.karotz.Karotz;
 
 /**
  * Task to get Karotz version in the background.

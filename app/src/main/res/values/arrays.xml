@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="pages">
+        <item>Home</item>
+        <item>Radio</item>
+        <item>Color</item>
+        <item>Ears</item>
+        <item>Karotz</item>
+    </string-array>
+
+    <array name="pages_icons">
+        <item>@drawable/ic_karotz_dark</item>
+        <item>@drawable/ic_radio</item>
+        <item>@drawable/ic_appearance</item>
+        <item>@drawable/ic_karotz_ears_dark</item>
+        <item>@drawable/ic_system</item>
+    </array>
+
+</resources>

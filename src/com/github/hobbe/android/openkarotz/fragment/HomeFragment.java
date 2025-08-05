@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.fragment;
+package com.github.wulfaz.android.openkarotz.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -34,8 +34,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.hobbe.android.openkarotz.R;
-import com.github.hobbe.android.openkarotz.activity.MainActivity;
+import com.github.wulfaz.android.openkarotz.R;
+import com.github.wulfaz.android.openkarotz.activity.MainActivity;
 
 /**
  * Home fragment.

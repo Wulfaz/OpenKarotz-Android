@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.karotz;
+package com.github.wulfaz.android.openkarotz.karotz;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -38,7 +38,11 @@ import org.json.JSONObject;
 import android.graphics.Color;
 import android.util.Log;
 
-import com.github.hobbe.android.openkarotz.net.NetUtils;
+import com.github.wulfaz.android.openkarotz.network.OpenKarotzApi;
+import com.github.wulfaz.android.openkarotz.network.ServiceGenerator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * OpenKarotz implementation.
@@ -53,11 +57,7 @@ public class OpenKarotz implements IKarotz {
 
         this.hostname = hostname;
 
-        try {
-            this.api = new URL(PROTOCOL + "://" + hostname + ":" + PORT);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        this.api = ServiceGenerator.createService(OpenKarotzApi.class, "http://" + hostname + ":9123");
     }
 
     @Override
@@ -75,24 +75,24 @@ public class OpenKarotz implements IKarotz {
             };
         }
 
-        URL url = new URL(api, CGI_BIN + "/ears?noreset=1&left=" + left.toString() + "&right=" + right.toString());
-        Log.d(LOG_TAG, url.toString());
-
-        String result = NetUtils.downloadUrl(url);
-        Log.d(LOG_TAG, result);
-
-        // Answer: {"return":"0","left":"0","right":"0"}
-        try {
-            JSONObject json = new JSONObject(result);
-            boolean ok = "0".equals(json.getString("return"));
-
-            if (ok) {
-                newPositions[0] = EarPosition.fromIntValue(Integer.valueOf(json.getString("left")).intValue());
-                newPositions[1] = EarPosition.fromIntValue(Integer.valueOf(json.getString("right")).intValue());
+        Call<EarsResponse> call = api.moveEars(left.toIntValue(), right.toIntValue(), 1);
+        call.enqueue(new Callback<EarsResponse>() {
+            @Override
+            public void onResponse(Call<EarsResponse> call, Response<EarsResponse> response) {
+                EarsResponse earsResponse = response.body();
+                if (earsResponse != null && earsResponse.isSuccess()) {
+                    newPositions[0] = EarPosition.fromIntValue(earsResponse.getLeftEarPositionInt());
+                    newPositions[1] = EarPosition.fromIntValue(earsResponse.getRightEarPositionInt());
+                } else {
+                    Log.e(LOG_TAG, "API Error: " + (earsResponse != null ? earsResponse.getMessage() : "Unknown error"));
+                }
             }
-        } catch (JSONException e) {
-            Log.e(LOG_TAG, "Cannot move Karotz ears: " + e.getMessage(), e);
-        }
+
+            @Override
+            public void onFailure(Call<EarsResponse> call, Throwable t) {
+                Log.e(LOG_TAG, "Cannot move Karotz ears: " + t.getMessage(), t);
+            }
+        });
 
         if (state != null) {
             state.setLeftEarPosition(newPositions[0]);
@@ -111,25 +111,24 @@ public class OpenKarotz implements IKarotz {
             return mode;
         }
 
-        URL url = new URL(api, CGI_BIN + "/ears_mode?disable=" + (mode.isEnabled() ? "0" : "1"));
-        Log.d(LOG_TAG, url.toString());
-
-        String result = NetUtils.downloadUrl(url);
-        Log.d(LOG_TAG, result);
-
-        // Answer: {"return":"0","disabled":"0"}
-        try {
-            JSONObject json = new JSONObject(result);
-            boolean ok = "0".equals(json.getString("return"));
-
-            if (ok) {
-                EarMode newMode = "0".equals(json.getString("disabled")) ? EarMode.ENABLED : EarMode.DISABLED;
-                state.setEarMode(newMode);
-                return newMode;
+        Call<EarsModeResponse> call = api.setEarsMode(mode.isEnabled() ? 0 : 1);
+        call.enqueue(new Callback<EarsModeResponse>() {
+            @Override
+            public void onResponse(Call<EarsModeResponse> call, Response<EarsModeResponse> response) {
+                EarsModeResponse earsModeResponse = response.body();
+                if (earsModeResponse != null && earsModeResponse.isSuccess()) {
+                    EarMode newMode = earsModeResponse.isEarsEnabled() ? EarMode.ENABLED : EarMode.DISABLED;
+                    state.setEarMode(newMode);
+                } else {
+                    Log.e(LOG_TAG, "API Error: " + (earsModeResponse != null ? earsModeResponse.getMessage() : "Unknown error"));
+                }
             }
-        } catch (JSONException e) {
-            Log.e(LOG_TAG, "Cannot en/disable Karotz ears: " + e.getMessage(), e);
-        }
+
+            @Override
+            public void onFailure(Call<EarsModeResponse> call, Throwable t) {
+                Log.e(LOG_TAG, "Cannot en/disable Karotz ears: " + t.getMessage(), t);
+            }
+        });
 
         return currentMode;
     }

@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.fragment;
+package com.github.wulfaz.android.openkarotz.fragment;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,15 +53,15 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-import com.github.hobbe.android.openkarotz.R;
-import com.github.hobbe.android.openkarotz.activity.MainActivity;
-import com.github.hobbe.android.openkarotz.karotz.IKarotz.KarotzStatus;
-import com.github.hobbe.android.openkarotz.karotz.Karotz;
-import com.github.hobbe.android.openkarotz.layout.FlowLayout;
-import com.github.hobbe.android.openkarotz.task.GetColorAsyncTask;
-import com.github.hobbe.android.openkarotz.task.GetPulseAsyncTask;
-import com.github.hobbe.android.openkarotz.task.GetStatusAsyncTask;
-import com.github.hobbe.android.openkarotz.task.LedAsyncTask;
+import com.github.wulfaz.android.openkarotz.R;
+import com.github.wulfaz.android.openkarotz.activity.MainActivity;
+import com.github.wulfaz.android.openkarotz.karotz.IKarotz.KarotzStatus;
+import com.github.wulfaz.android.openkarotz.karotz.Karotz;
+import com.github.wulfaz.android.openkarotz.layout.FlowLayout;
+import com.github.wulfaz.android.openkarotz.task.GetColorAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.GetPulseAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.GetStatusAsyncTask;
+import com.github.wulfaz.android.openkarotz.task.LedAsyncTask;
 
 /**
  * Appearance fragment.

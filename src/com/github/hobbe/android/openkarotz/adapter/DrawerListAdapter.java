@@ -26,7 +26,7 @@
  *
  */
 
-package com.github.hobbe.android.openkarotz.adapter;
+package com.github.wulfaz.android.openkarotz.adapter;
 
 import java.util.ArrayList;
 
@@ -38,8 +38,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.hobbe.android.openkarotz.R;
-import com.github.hobbe.android.openkarotz.model.DrawerItem;
+import com.github.wulfaz.android.openkarotz.R;
+import com.github.wulfaz.android.openkarotz.model.DrawerItem;
 
 /**
  * This class represents the list adapter for the navigation drawer.
