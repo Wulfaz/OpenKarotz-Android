@@ -32,7 +32,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.ActionBar;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -104,8 +105,13 @@ public class RadioFragment extends Fragment {
         getActivity().setTitle(pageTitle);
 
         // Action bar tab navigation
-        actionBar = getActivity().getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        if (activity != null) {
+            actionBar = activity.getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+            }
+        }
 
         View view = inflater.inflate(R.layout.page_radio, container, false);
 
@@ -137,14 +143,18 @@ public class RadioFragment extends Fragment {
     public void onPause() {
         Log.v(LOG_TAG, "onPause");
         super.onPause();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        if (actionBar != null) {
+            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        }
     }
 
     @Override
     public void onResume() {
         Log.v(LOG_TAG, "onResume");
         super.onResume();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        if (actionBar != null) {
+            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        }
     }
 
     private void initializeView(View view) {

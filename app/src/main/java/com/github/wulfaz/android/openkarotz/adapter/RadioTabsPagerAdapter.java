@@ -28,12 +28,13 @@
 
 package com.github.wulfaz.android.openkarotz.adapter;
 
-import android.app.ActionBar;
-import android.app.ActionBar.Tab;
-import android.app.FragmentTransaction;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import android.util.Log;
@@ -56,8 +57,6 @@ public class RadioTabsPagerAdapter extends FragmentPagerAdapter implements Actio
     public RadioTabsPagerAdapter(FragmentActivity activity, ViewPager pager, RadioGroupModel[] groups) {
         super(activity.getSupportFragmentManager());
 
-        this.actionBar = activity.getActionBar();
-
         this.viewPager = pager;
         this.viewPager.setAdapter(this);
         this.viewPager.setOnPageChangeListener(this);
@@ -66,7 +65,10 @@ public class RadioTabsPagerAdapter extends FragmentPagerAdapter implements Actio
         this.groups = groups;
 
         // Clean up current action bar
-        actionBar.removeAllTabs();
+        actionBar = ((AppCompatActivity) activity).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.removeAllTabs();
+        }
 
         // Adding Tabs
         for (RadioGroupModel group : groups) {
@@ -126,12 +128,12 @@ public class RadioTabsPagerAdapter extends FragmentPagerAdapter implements Actio
     }
 
     @Override
-    public void onTabReselected(Tab tab, FragmentTransaction ft) {
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
         // Nothing to do
     }
 
     @Override
-    public void onTabSelected(Tab tab, FragmentTransaction ft) {
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
         Object tag = tab.getTag();
         for (int i = 0; i < groups.length; i++) {
             if (groups[i] == tag) {
@@ -141,11 +143,11 @@ public class RadioTabsPagerAdapter extends FragmentPagerAdapter implements Actio
     }
 
     @Override
-    public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
         // Nothing to do
     }
 
-    private void addTab(Tab tab, RadioGroupModel group) {
+    private void addTab(ActionBar.Tab tab, RadioGroupModel group) {
         tab.setText(group.getName());
         tab.setTag(group);
         tab.setTabListener(this);
@@ -155,7 +157,7 @@ public class RadioTabsPagerAdapter extends FragmentPagerAdapter implements Actio
     }
 
 
-    private final ActionBar actionBar;
+    private final androidx.appcompat.app.ActionBar actionBar;
 
     private final ViewPager viewPager;
 

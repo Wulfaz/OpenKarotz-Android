@@ -74,19 +74,19 @@ public class RadioTabFragment extends Fragment {
             new GetStatusTask(getActivity()).execute();
         }
 
-        Log.v(LOG_TAG, "onActivityCreated: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onActivityCreated: " + getGroupName());
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        Log.v(LOG_TAG, "onAttach: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onAttach: " + getGroupName());
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.v(LOG_TAG, "onCreate: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onCreate: " + getGroupName());
     }
 
     @Override
@@ -104,63 +104,63 @@ public class RadioTabFragment extends Fragment {
 
         disableFields();
 
-        Log.v(LOG_TAG, "onCreateView: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onCreateView: " + getGroupName());
         return view;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.v(LOG_TAG, "onDestroy: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onDestroy: " + getGroupName());
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.v(LOG_TAG, "onDestroyView: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onDestroyView: " + getGroupName());
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        Log.v(LOG_TAG, "onDetach: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onDetach: " + getGroupName());
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.v(LOG_TAG, "onPause: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onPause: " + getGroupName());
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.v(LOG_TAG, "onResume: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onResume: " + getGroupName());
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.v(LOG_TAG, "onSaveInstanceState: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onSaveInstanceState: " + getGroupName());
         outState.putSerializable(RadioTabFragment.KEY_GROUP, group);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Log.v(LOG_TAG, "onStart: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onStart: " + getGroupName());
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.v(LOG_TAG, "onStop: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onStop: " + getGroupName());
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.v(LOG_TAG, "onViewCreated: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "onViewCreated: " + getGroupName());
     }
 
     @Override
@@ -173,7 +173,7 @@ public class RadioTabFragment extends Fragment {
     }
 
     private void addButtonsToLayout() {
-        Log.v(LOG_TAG, "Adding buttons to radio layout: " + (group == null ? "no group" : group.getName()));
+        Log.v(LOG_TAG, "Adding buttons to radio layout: " + getGroupName());
         buttonMap.clear();
 
         for (RadioModel radio : group.getRadios()) {
@@ -206,7 +206,7 @@ public class RadioTabFragment extends Fragment {
     }
 
     private void initializeRadioLayout(View view) {
-        Log.d(LOG_TAG, "Initializing radio layout for group: " + (group == null ? "no group" : group.getName()));
+        Log.d(LOG_TAG, "Initializing radio layout for group: " + getGroupName());
         if (group == null) {
             return;
         }
@@ -217,7 +217,7 @@ public class RadioTabFragment extends Fragment {
     }
 
     private void initializeView(View view) {
-        Log.d(LOG_TAG, "Initializing view for group: " + (group == null ? "no group" : group.getName()));
+        Log.d(LOG_TAG, "Initializing view for group: " + getGroupName());
 
         // Radio button layout
         initializeRadioLayout(view);
@@ -246,7 +246,6 @@ public class RadioTabFragment extends Fragment {
 
         return fragment;
     }
-
 
     private class GetStatusTask extends GetStatusAsyncTask {
 
@@ -282,7 +281,6 @@ public class RadioTabFragment extends Fragment {
             Toast.makeText(getActivity(), getString(R.string.radio_starting) + " " + name, Toast.LENGTH_SHORT).show();
         }
 
-
         private final String name;
     }
 
@@ -299,11 +297,13 @@ public class RadioTabFragment extends Fragment {
             new PlayRadioTask(getActivity(), url, name).execute();
         }
 
-
         private final String url;
         private final String name;
     }
 
+    private String getGroupName() {
+        return group == null ? "no group" : group.getName();
+    }
 
     /** Bundle key for group. */
     public static final String KEY_GROUP = "group";
@@ -311,6 +311,7 @@ public class RadioTabFragment extends Fragment {
     private FlowLayout radioLayout = null;
 
     private RadioGroupModel group;
+
     private final Map<String, ImageButton> buttonMap = new HashMap<String, ImageButton>();
 
     private static final String LOG_TAG = RadioTabFragment.class.getSimpleName();
