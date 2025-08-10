@@ -105,7 +105,7 @@ com.github.wulfaz.android.openkarotz/
 - **Coroutines** for async operations
 
 ### Network Communication
-- **Default Port:** 9123 for Karotz device communication
+- **Default Port:** 80 for Karotz device communication
 - **Protocol:** HTTP REST API to OpenKarotz firmware
 - **Multi-device:** Supports multiple Karotz devices on local network
 - **Cleartext Traffic:** Enabled for local device communication

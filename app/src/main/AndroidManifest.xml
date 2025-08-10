@@ -42,7 +42,7 @@
         </activity>
         <activity
             android:name=".activity.DeviceManagementActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme.MaterialComponents.NoActionBar"
             android:label="Manage Devices"
             android:parentActivityName=".activity.MainActivity"
             android:exported="false" >
@@ -52,7 +52,7 @@
         </activity>
         <activity
             android:name=".activity.AddEditDeviceActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:theme="@style/AppTheme.MaterialComponents.NoActionBar"
             android:label="Add/Edit Device"
             android:parentActivityName=".activity.DeviceManagementActivity"
             android:exported="false" >

@@ -47,7 +47,7 @@ public class KarotzDevice {
     @NonNull
     public String hostname;
     
-    public int port = 9123; // Default OpenKarotz port
+    public int port = 80; // Default OpenKarotz port
     
     public boolean isDefault = false;
     

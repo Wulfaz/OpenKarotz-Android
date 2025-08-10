@@ -97,7 +97,7 @@ public class AddEditDeviceActivity extends AppCompatActivity {
         editTextDescription = findViewById(R.id.edit_text_description);
         
         // Set default port
-        editTextPort.setText("9123");
+        editTextPort.setText("80");
     }
 
     private void setupViewModel() {

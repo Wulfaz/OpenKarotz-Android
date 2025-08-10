@@ -57,7 +57,7 @@ public class OpenKarotz implements IKarotz {
 
         this.hostname = hostname;
 
-        this.api = ServiceGenerator.createService(OpenKarotzApi.class, "http://" + hostname + ":9123");
+        this.api = ServiceGenerator.createService(OpenKarotzApi.class, PROTOCOL + "://" + hostname + ":" + PORT);
     }
 
     @Override

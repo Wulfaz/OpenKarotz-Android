@@ -265,7 +265,6 @@ public class OpenKarotz implements IKarotz {
         return state.getVersion();
     }
 
-
     @Override
     public boolean isPulsing() throws IOException {
         if (isOffline()) {

@@ -31,8 +31,40 @@
         <item name="android:shadowRadius">2</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    
+    <!-- Material Components theme for activities using MaterialCardView and other Material components -->
+    <!-- Matches the light AppCompat theme appearance used in MainActivity -->
+    <style name="AppTheme.MaterialComponents" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">#F5F5F5</item>
+        <item name="colorPrimaryVariant">#757575</item>
+        <item name="colorOnPrimary">@android:color/black</item>
+        <item name="colorSecondary">#BDBDBD</item>
+        <item name="colorSecondaryVariant">#757575</item>
+        <item name="colorOnSecondary">@android:color/black</item>
+        <item name="colorSurface">@android:color/white</item>
+        <item name="colorOnSurface">@android:color/black</item>
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="colorOnBackground">@android:color/black</item>
+        <item name="android:statusBarColor">#757575</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+    </style>
+    
+    <style name="AppTheme.MaterialComponents.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#F5F5F5</item>
+        <item name="colorPrimaryVariant">#757575</item>
+        <item name="colorOnPrimary">@android:color/black</item>
+        <item name="colorSecondary">#BDBDBD</item>
+        <item name="colorSecondaryVariant">#757575</item>
+        <item name="colorOnSecondary">@android:color/black</item>
+        <item name="colorSurface">@android:color/white</item>
+        <item name="colorOnSurface">@android:color/black</item>
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="colorOnBackground">@android:color/black</item>
+        <item name="android:statusBarColor">#757575</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+    </style>
 
 </resources>

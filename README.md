@@ -90,7 +90,7 @@ cd OpenKarotz-Android
 The app stores device configurations locally using Room database. Each device entry includes:
 - Device name
 - Hostname/IP address  
-- Port (default: 9123)
+- Port (default: 80)
 - Online status
 - Last seen timestamp
 
